@@ -1,14 +1,14 @@
 # KeySelector - CHC Series
 
-Application Version: **3.1.10**  
+Application Version: **3.1.11**  
 Database Version: **260717**
 
-Updates:
-- Uses the approved B.G.REICH app icon.
-- Smallest motor kW remains the permanent pump-selection priority.
-- ISO wording remains `ISO 9906 Grade 3B`.
-- PC PDF remains reduced by about 1% to keep the NPSHr chart border inside the page.
-- Mobile curve and PWA fixes are retained.
+## v3.1.11 correction
+
+- Corrected the missing bottom border of the NPSHr chart in exported PDFs.
+- Added a small safe area below the report.
+- Reduced only the final NPSHr chart row by 1 mm.
+- Kept the existing graph scale, fonts, icon, selection logic, and one-page layout.
 
 ## Upload to GitHub
 
@@ -20,6 +20,6 @@ Updates:
 6. Wait for GitHub Pages to redeploy.
 
 Test:
-https://iraychan.github.io/KeySelector/?v=3110
+https://iraychan.github.io/KeySelector/?v=3111
 
-For the new phone icon, remove the old home-screen installation and install it again.
+If the old version remains visible, refresh the page or close and reopen the installed app.
