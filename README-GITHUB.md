@@ -1,22 +1,22 @@
 # KeySelector - CHC Series
 
-Application Version: **3.1.5**  
+Application Version: **3.1.6**  
 Database Version: **260717**
 
-Updates:
-- New blue Keylargo app icon without the CHC badge.
-- Changed `ISO 9906:2012 Grade 3B` to `ISO 9906 Grade 3B`.
-- Retains the mobile curve proportion fix.
-- Retains the one-page A4 PDF export fix.
+Fixes:
+- Replaced the awkward cropped icon.
+- New clean blue Keylargo icon with no CHC text.
+- Added a dedicated Apple home-screen icon.
+- Retains ISO 9906 Grade 3B wording.
+- Retains mobile curve and one-page PDF fixes.
 
-## Upload to GitHub
+Upload all files to the root of your GitHub repository and replace the old files.
 
-1. Extract this ZIP.
-2. Open the `iraychan/KeySelector` repository.
-3. Upload all extracted files to the repository root.
-4. Replace the existing files and commit.
-5. Wait for GitHub Pages to redeploy.
-6. Open:
-   https://iraychan.github.io/KeySelector/?v=315
+After deployment, open:
+https://iraychan.github.io/KeySelector/?v=316
 
-To update the phone icon, delete the old home-screen installation and install it again.
+Important:
+1. Delete the old home-screen app.
+2. Clear the website data/cache if the old icon remains.
+3. Open the new URL.
+4. Add it to the home screen again.

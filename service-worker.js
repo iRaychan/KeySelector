@@ -1,4 +1,4 @@
-const CACHE_NAME = "keyselector-chc-v3.1.5";
+const CACHE_NAME = "keyselector-chc-v3.1.6";
 const APP_FILES = [
   "./",
   "./index.html",
@@ -6,6 +6,7 @@ const APP_FILES = [
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./favicon.png",
+  "./apple-touch-icon.png",
   "./pump-data.json",
   "./README.txt",
   "./bgreich-logo.png"
