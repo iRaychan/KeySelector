@@ -1,26 +1,25 @@
 # KeySelector - CHC Series
 
-Application Version: **3.1.12**  
+Application Version: **3.1.13**  
 Database Version: **260717**
 
-## v3.1.12 corrections
+## v3.1.13 corrections
 
-- Rebuilt the NPSHr chart border as a separate HTML frame.
-- The bottom border no longer depends on the SVG edge, preventing PDF clipping.
-- Required flow and required head are printed in red.
-- The `@` separator remains blue.
-- Pump data, calculation logic, selection priority, curves, icon, and one-page layout are unchanged.
+- Restored the exported report to one page.
+- Removed the extra NPSHr HTML wrapper that increased page height.
+- Kept the NPSHr bottom border visible using an inset SVG border.
+- Required flow and required head above the charts now print in red.
+- Pump data, calculations, curves, icon, and selection logic are unchanged.
 
 ## Upload to GitHub
 
 1. Extract this ZIP.
-2. Open the `iraychan/KeySelector` repository.
-3. Upload all extracted files to the repository root.
-4. Replace the existing files.
-5. Commit the changes.
-6. Wait for GitHub Pages to redeploy.
+2. Upload all extracted files to the root of `iraychan/KeySelector`.
+3. Replace the existing files.
+4. Commit the changes.
+5. Wait for GitHub Pages to redeploy.
 
 Test:
-https://iraychan.github.io/KeySelector/?v=3112
+https://iraychan.github.io/KeySelector/?v=3113
 
-If an installed PWA still shows the previous version, close and reopen it or remove and reinstall it.
+If the old PWA remains cached, close and reopen it or remove and reinstall it.
