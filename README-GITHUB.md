@@ -1,22 +1,25 @@
 # KeySelector - CHC Series
 
-Application Version: **3.1.8**  
+Application Version: **3.1.10**  
 Database Version: **260717**
 
 Updates:
-- App icon changed from KEYLARGO to B.G.REICH.
-- Pump selection always prioritizes the smallest motor kW.
-- PDF report uses more of the A4 printable area.
-- Mobile curve proportion fix retained.
+- Uses the approved B.G.REICH app icon.
+- Smallest motor kW remains the permanent pump-selection priority.
 - ISO wording remains `ISO 9906 Grade 3B`.
+- PC PDF remains reduced by about 1% to keep the NPSHr chart border inside the page.
+- Mobile curve and PWA fixes are retained.
 
-## iPhone print footer
+## Upload to GitHub
 
-Safari/iOS may add the URL and date/time to a printed page. This is controlled by
-the iPhone print system and cannot be reliably removed by webpage CSS. A future
-direct-PDF generator would avoid Safari print headers and footers completely.
+1. Extract this ZIP.
+2. Open the `iraychan/KeySelector` repository.
+3. Upload all extracted files to the repository root.
+4. Replace the existing files.
+5. Commit the changes.
+6. Wait for GitHub Pages to redeploy.
 
-Upload all files to the GitHub repository root and replace the old files.
+Test:
+https://iraychan.github.io/KeySelector/?v=3110
 
-Test after deployment:
-https://iraychan.github.io/KeySelector/?v=318
+For the new phone icon, remove the old home-screen installation and install it again.
