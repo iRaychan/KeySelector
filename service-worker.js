@@ -1,4 +1,4 @@
-const CACHE_NAME = "keyselector-chc-v3.1.18";
+const CACHE_NAME = "keyselector-chc-v3.1.19";
 const APP_FILES = [
   "./",
   "./index.html",
