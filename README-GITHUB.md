@@ -1,4 +1,4 @@
-# KeySelector CHC v3.2.3f
+# KeySelector CHC v3.2.3g
 
 Test build for the two-page Pump Selection and Technical Data report.
 
@@ -10,7 +10,7 @@ Changes in this build:
 Open `index.html` in Chrome or Edge, select a pump, and use Export PDF.
 
 
-## v3.2.3f
+## v3.2.3g
 - Replaced B.G.Reich logo with the supplied high-definition PNG.
 - Lowered the Page 2 TECHNICAL DATA title by 3 px.
 - Moved the modification notice one row below the approximate dimension note.
@@ -18,3 +18,10 @@ Open `index.html` in Chrome or Edge, select a pump, and use Export PDF.
 - Reduced the Page 2 header-to-table gap by about half.
 - Increased and balanced Page 2 row heights and section spacing to use the printable page more evenly.
 - Kept the approved table structure, borders, logo, and footer wording unchanged.
+
+
+## v3.2.3g
+- TECHNICAL DATA title: 13 px
+- Technical table content: 10 px
+- Approximate dimension note: 10 px
+- B.G.Reich reservation notice: 11 px
