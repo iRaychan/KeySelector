@@ -1,4 +1,4 @@
-# KeySelector CHC v3.2.3d
+# KeySelector CHC v3.2.3e
 
 Test build for the two-page Pump Selection and Technical Data report.
 
@@ -8,3 +8,9 @@ Changes in this build:
 - Removed the duplicate print page break that could create a blank second page on PC.
 
 Open `index.html` in Chrome or Edge, select a pump, and use Export PDF.
+
+
+## v3.2.3e
+- Replaced B.G.Reich logo with the supplied high-definition PNG.
+- Lowered the Page 2 TECHNICAL DATA title by 3 px.
+- Moved the modification notice one row below the approximate dimension note.
