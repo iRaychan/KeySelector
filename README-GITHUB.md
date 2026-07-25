@@ -1,19 +1,16 @@
-# KeySelector CHC v3.2.3a
+# KeySelector CHC v3.2.3b
 
-Immediate test release based on v3.2.2.
+Test release focused on the Technical Data page.
 
-## Changes
-- Removed the duplicate page-break logic that caused a blank PDF page.
-- Added the same B.G.Reich logo/model header to the Technical Data page.
-- Added consistent page footers and page numbering.
-- Kept the existing Page 1 chart layout and selection logic.
-- Updated the Technical Data page to use the available A4 print area more efficiently.
-- Increased the print delay to improve logo and chart rendering reliability.
+Changes:
+- Technical Data title moved to top right.
+- Removed model/frequency/header divider from Page 2.
+- Section header fill changed to #E6B7B8.
+- Added spacing between Operating Data, Pump, Motor and Pumpset sections.
+- Pump material group border layout revised.
+- Motor efficiency and power-factor internal horizontal lines removed as marked.
+- Pumpset dimension internal horizontal lines removed as marked.
+- Removed KeySelector/version and page count from Page 2 footer.
+- Modification notice centered at the bottom.
 
-## Test
-1. Open `index.html` in Chrome or Edge.
-2. Select a duty point and pump.
-3. Click Export PDF.
-4. Confirm the preview contains exactly 2 pages with no blank page.
-
-This is an immediate framework test release, not the final v3.2.3 production release.
+Open `index.html` in a browser, select a pump and use Export PDF.
