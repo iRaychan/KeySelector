@@ -47,3 +47,10 @@ Open `index.html` in Chrome or Edge, select a pump, and use Export PDF.
 ## v3.2.3n changes
 - Page 3: removed the extra left line before Weight and moved the Weight block left to share the dimension table boundary.
 - Selection page: renamed “Select CHC Pump” to “Select” and moved it beside Required Duty, above the Flow controls.
+
+## v3.2.3o changes
+- Updated Page 2 Pumpset dimensions from CHC - 260726 - V1.1.xlsx.
+- Length = the larger of (D1 / 2 + D2) and the CHC Dimension sheet Pump L.
+- Width = the larger of (D1 / 2 + D2) and the CHC Dimension sheet Pump W.
+- Height and weight now come directly from the selected model row in the CHC sheet.
+- Page 3 dimension table now shows B1, B2, B1+B2, D1 and D2 only; D has been removed.
