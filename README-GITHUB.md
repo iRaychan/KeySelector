@@ -25,3 +25,10 @@ Open `index.html` in Chrome or Edge, select a pump, and use Export PDF.
 - Technical table content: 10 px
 - Approximate dimension note: 10 px
 - B.G.Reich reservation notice: 11 px
+
+## v3.2.3h motor data update
+- Added motor efficiency selection: IE5, IE4, IE3 (default), IE2 and IE.
+- Added motor phase selection: 3 Phase (default) and 1 Phase.
+- Voltage range changes automatically: 380–415 V for 3 Phase; 220–240 V for 1 Phase.
+- Page 2 motor specifications now match motor HP, phase and efficiency class using Motor - 260726.xlsx.
+- IE4 and IE5 remain selectable and display Data Not Available until their specification tables are added.
