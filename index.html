@@ -461,7 +461,7 @@ function exportPDF(){
  ];
 
  const report=`<!doctype html>
- <html><head><meta charset="utf-8"><title>${best.model} - Pump Selection & Technical Data</title>
+ <html><head><meta charset="utf-8"><title>${best.model}</title>
  <style>
  @page{size:A4;margin:8mm}
  *{box-sizing:border-box}
@@ -488,11 +488,11 @@ function exportPDF(){
  .tds-logo-box{display:flex;align-items:flex-start;justify-content:flex-start;padding:0}.tds-logo{display:block;width:52mm;height:auto;max-height:17mm;object-fit:contain;object-position:left top;-webkit-print-color-adjust:exact;print-color-adjust:exact}
  .tds-project{display:none}
  .tds-title{font-size:13px;font-weight:700;text-align:right;padding-top:calc(2mm + 3px)}
- .tds-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:12px;color:#111;font-family:Arial,Helvetica,sans-serif;font-style:normal;font-variant:normal;letter-spacing:normal}
+ .tds-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:14px;color:#111;font-family:Arial,Helvetica,sans-serif;font-style:normal;font-variant:normal;letter-spacing:normal}
  .tech-page,.tech-page *{font-family:Arial,Helvetica,sans-serif}
  .tds-table col.label{width:22%}.tds-table col.value{width:28%}
- .tds-table td{border:1px solid #222;padding:1.75mm 2mm;height:7.1mm;vertical-align:bottom;line-height:1.15}
- .tds-table .section td{height:7.5mm;padding:1.55mm 2mm;background:#E6B7B8!important;font-size:13px;font-weight:700;text-align:center;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .tds-table td{border:1px solid #222;padding:1.75mm 2mm;height:7.1mm;vertical-align:bottom!important;line-height:1.15}
+ .tds-table .section td{height:7.5mm;padding:1.55mm 2mm;background:#E6B7B8!important;font-size:15px;font-weight:700;text-align:center;-webkit-print-color-adjust:exact;print-color-adjust:exact}
  .tds-table .label-cell{font-weight:400}.tds-table .value-cell{font-weight:400}.tds-table .sub-label{padding-left:6mm}
  .tds-table .model-value{font-weight:700}.tds-table .unit-right{text-align:right}
  .tds-footer{position:relative;display:block;padding:2.2mm 1mm 0;font-size:8px;color:#333;min-height:14mm}
@@ -500,6 +500,12 @@ function exportPDF(){
  .tds-footer .notice{display:block;text-align:center;width:100%;padding-top:7mm;font-size:11px}
  .tds-footer .draft{display:none}
  .tds-table tr.section-gap td{border:0!important;height:3.3mm;padding:0;background:#fff!important}
+ .tds-table tr.table-block td:first-child{border-left:2.4px solid #111!important}
+ .tds-table tr.table-block td:last-child{border-right:2.4px solid #111!important}
+ .tds-table tr.table-start td{border-top:2.4px solid #111!important}
+ .tds-table tr.table-end td{border-bottom:2.4px solid #111!important}
+ .tds-table tr.section.table-start td{border-left:2.4px solid #111!important;border-right:2.4px solid #111!important;border-top:2.4px solid #111!important}
+
  .tds-table td.no-bottom{border-bottom:0!important}
  .tds-table td.no-top{border-top:0!important}
  .tds-table td.indent{padding-left:6mm}
@@ -553,45 +559,45 @@ function exportPDF(){
   </div>
   <table class="tds-table">
    <colgroup><col class="label"><col class="value"><col class="label"><col class="value"></colgroup>
-   <tr class="section"><td colspan="4">Operating Data</td></tr>
-   <tr><td class="label-cell">Application</td><td class="value-cell">-</td><td class="label-cell">Capacity</td><td class="value-cell">${formatNumber(q,1)} M³/Hr</td></tr>
-   <tr><td class="label-cell">Location</td><td class="value-cell">-</td><td class="label-cell">Pressure</td><td class="value-cell">${formatNumber(h,1)} Mtr</td></tr>
-   <tr><td class="label-cell">Fluid</td><td class="value-cell">Water, Clean</td><td class="label-cell">Temperature</td><td class="value-cell">20 °C</td></tr>
-   <tr><td class="label-cell">Density</td><td class="value-cell">0.9983 kg/dm³</td><td class="label-cell"></td><td class="value-cell"></td></tr>
-   <tr><td class="label-cell">Kin. Viscosity</td><td class="value-cell">1.005 mm²/s</td><td class="label-cell"></td><td class="value-cell"></td></tr>
+   <tr class="section table-block table-start"><td colspan="4">Operating Data</td></tr>
+   <tr class="table-block"><td class="label-cell">Application</td><td class="value-cell">-</td><td class="label-cell">Capacity</td><td class="value-cell">${formatNumber(q,1)} M³/Hr</td></tr>
+   <tr class="table-block"><td class="label-cell">Location</td><td class="value-cell">-</td><td class="label-cell">Pressure</td><td class="value-cell">${formatNumber(h,1)} Mtr</td></tr>
+   <tr class="table-block"><td class="label-cell">Fluid</td><td class="value-cell">Water, Clean</td><td class="label-cell">Temperature</td><td class="value-cell">20 °C</td></tr>
+   <tr class="table-block"><td class="label-cell">Density</td><td class="value-cell">0.9983 kg/dm³</td><td class="label-cell"></td><td class="value-cell"></td></tr>
+   <tr class="table-block table-end"><td class="label-cell">Kin. Viscosity</td><td class="value-cell">1.005 mm²/s</td><td class="label-cell"></td><td class="value-cell"></td></tr>
 
    <tr class="section-gap"><td colspan="4"></td></tr>
-   <tr class="section"><td colspan="4">Pump</td></tr>
-   <tr><td>Brand</td><td>B.G.Reich</td><td>Country of Origin</td><td>Malaysia</td></tr>
-   <tr><td>Type</td><td>VMS Pump</td><td>Country of Manufacture</td><td>China</td></tr>
-   <tr><td>Model</td><td class="model-value">${best.model}</td><td>Suction Size</td><td>${best.connection}</td></tr>
-   <tr><td>Speed</td><td>${Math.round(hz*58)} rpm</td><td>Discharge Size</td><td>${best.connection}</td></tr>
-   <tr><td class="material-heading no-bottom">Material: -</td><td class="no-bottom"></td><td>Efficiency</td><td>${formatNumber(requiredEff,1)} %</td></tr>
-   <tr><td class="material-label indent">Casing</td><td class="material-value">SS (CI Connection)</td><td>Brake HP</td><td>${formatNumber(requiredPower/0.746,1)} HP</td></tr>
-   <tr><td class="material-label indent">Impeller</td><td class="material-value">Stainless Steel</td><td>No. of Stage</td><td>${best.stages} Stages</td></tr>
-   <tr><td class="material-last indent">Shaft</td><td class="material-last">Stainless Steel</td><td>NPSHr</td><td>${formatNumber(requiredNpsh,1)} Mtr</td></tr>
-   <tr><td>Shaft Seal</td><td>Mechanical Seal</td><td>Max Casing Pressure</td><td>${best.max_pressure_bar.toFixed(0)} Bar</td></tr>
-   <tr><td>Bearing Type</td><td>Bush</td><td></td><td></td></tr>
+   <tr class="section table-block table-start"><td colspan="4">Pump</td></tr>
+   <tr class="table-block"><td>Brand</td><td>B.G.Reich</td><td>Country of Origin</td><td>Malaysia</td></tr>
+   <tr class="table-block"><td>Type</td><td>VMS Pump</td><td>Country of Manufacture</td><td>China</td></tr>
+   <tr class="table-block"><td>Model</td><td class="model-value">${best.model}</td><td>Suction Size</td><td>${best.connection}</td></tr>
+   <tr class="table-block"><td>Speed</td><td>${Math.round(hz*58)} rpm</td><td>Discharge Size</td><td>${best.connection}</td></tr>
+   <tr class="table-block"><td class="material-heading no-bottom">Material: -</td><td class="no-bottom"></td><td>Efficiency</td><td>${formatNumber(requiredEff,1)} %</td></tr>
+   <tr class="table-block"><td class="material-label indent">Casing</td><td class="material-value">SS (CI Connection)</td><td>Brake HP</td><td>${formatNumber(requiredPower/0.746,1)} HP</td></tr>
+   <tr class="table-block"><td class="material-label indent">Impeller</td><td class="material-value">Stainless Steel</td><td>No. of Stage</td><td>${best.stages} Stages</td></tr>
+   <tr class="table-block"><td class="material-last indent">Shaft</td><td class="material-last">Stainless Steel</td><td>NPSHr</td><td>${formatNumber(requiredNpsh,1)} Mtr</td></tr>
+   <tr class="table-block"><td>Shaft Seal</td><td>Mechanical Seal</td><td>Max Casing Pressure</td><td>${best.max_pressure_bar.toFixed(0)} Bar</td></tr>
+   <tr class="table-block table-end"><td>Bearing Type</td><td>Bush</td><td></td><td></td></tr>
 
    <tr class="section-gap"><td colspan="4"></td></tr>
-   <tr class="section"><td colspan="4">Motor</td></tr>
-   <tr><td>Brand</td><td>B.G.Reich</td><td>Country of Origin</td><td>Malaysia</td></tr>
-   <tr><td>Type</td><td>TEFC</td><td>Country of Manufacture</td><td>China</td></tr>
-   <tr><td>Model</td><td>${motorData.available?motorData.model:"Data Not Available"}</td><td class="no-bottom field-heading">Efficiency:</td><td class="no-bottom">${motorEffClass}</td></tr>
-   <tr><td>Rated Power</td><td>${formatHP(best.motor_hp)}</td><td class="no-top no-bottom indent">100%</td><td class="no-top no-bottom">${motorData.available?motorValue(motorData.eff100," %"):"-"}</td></tr>
-   <tr><td>Speed</td><td>${motorData.available&&motorData.rpm!==null?motorData.rpm+" rpm":"-"}</td><td class="no-top indent">75%</td><td class="no-top">${motorData.available?motorValue(motorData.eff75," %"):"-"}</td></tr>
-   <tr><td>Rated FL Amp</td><td>${motorData.available?motorValue(motorData.amp," Amp"):"-"}</td><td class="no-bottom field-heading">Power Factor:-</td><td class="no-bottom"></td></tr>
-   <tr><td>Frequency</td><td>${hz.toFixed(0)} Hz</td><td class="no-top no-bottom indent">100%</td><td class="no-top no-bottom">${motorData.available?motorValue(motorData.pf100):"-"}</td></tr>
-   <tr><td>Rated Voltage</td><td>${motorVoltageValue.toFixed(0)} Volt</td><td class="no-top indent">75%</td><td class="no-top">${motorData.available?motorValue(motorData.pf75):"-"}</td></tr>
-   <tr><td>Phase</td><td>${motorPhaseText}</td><td>Protection</td><td>IP 55</td></tr>
-   <tr><td>Insulation Class</td><td>Class F</td><td></td><td></td></tr>
+   <tr class="section table-block table-start"><td colspan="4">Motor</td></tr>
+   <tr class="table-block"><td>Brand</td><td>B.G.Reich</td><td>Country of Origin</td><td>Malaysia</td></tr>
+   <tr class="table-block"><td>Type</td><td>TEFC</td><td>Country of Manufacture</td><td>China</td></tr>
+   <tr class="table-block"><td>Model</td><td>${motorData.available?motorData.model:"Data Not Available"}</td><td class="no-bottom field-heading">Efficiency:</td><td class="no-bottom">${motorEffClass}</td></tr>
+   <tr class="table-block"><td>Rated Power</td><td>${formatHP(best.motor_hp)}</td><td class="no-top no-bottom indent">100%</td><td class="no-top no-bottom">${motorData.available?motorValue(motorData.eff100," %"):"-"}</td></tr>
+   <tr class="table-block"><td>Speed</td><td>${motorData.available&&motorData.rpm!==null?motorData.rpm+" rpm":"-"}</td><td class="no-top indent">75%</td><td class="no-top">${motorData.available?motorValue(motorData.eff75," %"):"-"}</td></tr>
+   <tr class="table-block"><td>Rated FL Amp</td><td>${motorData.available?motorValue(motorData.amp," Amp"):"-"}</td><td class="no-bottom field-heading">Power Factor:-</td><td class="no-bottom"></td></tr>
+   <tr class="table-block"><td>Frequency</td><td>${hz.toFixed(0)} Hz</td><td class="no-top no-bottom indent">100%</td><td class="no-top no-bottom">${motorData.available?motorValue(motorData.pf100):"-"}</td></tr>
+   <tr class="table-block"><td>Rated Voltage</td><td>${motorVoltageValue.toFixed(0)} Volt</td><td class="no-top indent">75%</td><td class="no-top">${motorData.available?motorValue(motorData.pf75):"-"}</td></tr>
+   <tr class="table-block"><td>Phase</td><td>${motorPhaseText}</td><td>Protection</td><td>IP 55</td></tr>
+   <tr class="table-block table-end"><td>Insulation Class</td><td>Class F</td><td></td><td></td></tr>
 
    <tr class="section-gap"><td colspan="4"></td></tr>
-   <tr class="section"><td colspan="4">Pumpset</td></tr>
-   <tr><td class="pumpset-open field-heading">Dimension: -</td><td class="pumpset-open dimension-divider"></td><td>Weight</td><td>${dimensionData.weight==null?"-":`${formatNumber(Number(dimensionData.weight),0)} kG`}</td></tr>
-   <tr><td class="sub-label pumpset-open-next">Length</td><td class="pumpset-open-next">${formatNumber(pumpsetLength,0)} mm</td><td></td><td></td></tr>
-   <tr><td class="sub-label pumpset-open-next">Width</td><td class="pumpset-open-next">${formatNumber(pumpsetWidth,0)} mm</td><td></td><td></td></tr>
-   <tr><td class="sub-label pumpset-open-last">Height</td><td class="pumpset-open-last">${dimValue(dimensionData.height)}</td><td></td><td></td></tr>
+   <tr class="section table-block table-start"><td colspan="4">Pumpset</td></tr>
+   <tr class="table-block"><td class="pumpset-open field-heading">Dimension: -</td><td class="pumpset-open dimension-divider"></td><td>Weight</td><td>${dimensionData.weight==null?"-":`${formatNumber(Number(dimensionData.weight),0)} kG`}</td></tr>
+   <tr class="table-block"><td class="sub-label pumpset-open-next">Length</td><td class="pumpset-open-next">${formatNumber(pumpsetLength,0)} mm</td><td></td><td></td></tr>
+   <tr class="table-block"><td class="sub-label pumpset-open-next">Width</td><td class="pumpset-open-next">${formatNumber(pumpsetWidth,0)} mm</td><td></td><td></td></tr>
+   <tr class="table-block table-end"><td class="sub-label pumpset-open-last">Height</td><td class="pumpset-open-last">${dimValue(dimensionData.height)}</td><td></td><td></td></tr>
   </table>
   <div class="tds-footer"><span class="approx">* Approximate dimension &amp; weight</span><span class="notice">B.G.Reich reserves the right to make modifications without notice.</span></div>
  </section>
@@ -619,10 +625,15 @@ window.onload=async()=>{
 <\/script>
  </body></html>`;
 
+ const pdfFileTitle=best.model;
+ const originalPageTitle=document.title;
+ document.title=pdfFileTitle;
  const previousFrame=document.getElementById("pdfPrintFrame");
  if(previousFrame)previousFrame.remove();
  const frame=document.createElement("iframe");
  frame.id="pdfPrintFrame";
+ frame.name=pdfFileTitle;
+ frame.title=pdfFileTitle;
  frame.setAttribute("aria-hidden","true");
  frame.style.position="fixed";
  frame.style.right="0";
@@ -639,6 +650,7 @@ window.onload=async()=>{
    try{window.focus();}catch(e){}
    setTimeout(()=>{
      if(frame.parentNode)frame.parentNode.removeChild(frame);
+     document.title=originalPageTitle;
      try{flowInput.disabled=false;headInput.disabled=false;flowInput.focus();}catch(e){}
    },100);
  };
