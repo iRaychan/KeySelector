@@ -56,9 +56,9 @@ Open `index.html` in Chrome or Edge, select a pump, and use Export PDF.
 - Page 3 dimension table now shows B1, B2, B1+B2, D1 and D2 only; D has been removed.
 
 
-## v3.2.3u
+## v3.2.3v
 - Kept all current Page 2 font sizes unchanged.
 - Standardized every Page 2 table font to the same Arial/Helvetica font face used on Page 3.
 
-## v3.2.3u update
+## v3.2.3v update
 - Page 2 Country of Origin changed to Malaysia.
