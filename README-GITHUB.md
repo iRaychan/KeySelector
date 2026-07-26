@@ -26,7 +26,7 @@ Open `index.html` in Chrome or Edge, select a pump, and use Export PDF.
 - Approximate dimension note: 10 px
 - B.G.Reich reservation notice: 11 px
 
-## v3.2.3j motor data update
+## v3.2.3k motor data update
 - Added motor efficiency selection: IE5, IE4, IE3 (default), IE2 and IE.
 - Added motor phase selection: 3 Phase (default) and 1 Phase.
 - Voltage range changes automatically: 380–415 V for 3 Phase; 220–240 V for 1 Phase.
@@ -34,6 +34,11 @@ Open `index.html` in Chrome or Edge, select a pump, and use Export PDF.
 - IE4 and IE5 remain selectable and display Data Not Available until their specification tables are added.
 
 
-## v3.2.3j
+## v3.2.3k
 - Page 2 motor HP omits unnecessary trailing .0 (for example, 15 HP; 1.5 HP).
 - PDF report tab closes after printing and returns focus to the selector, allowing a new Flow and Head duty point without refreshing.
+
+
+## v3.2.3k changes
+- Page 3 dimension table vertical separators adjusted to match the approved layout.
+- PDF export now uses a temporary print frame, keeping Flow and Head editable after export without refreshing.
