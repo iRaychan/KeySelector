@@ -389,6 +389,11 @@ function selectAlternative(index){
 function formatNumber(v,dec=1){
  return Number(v).toLocaleString(undefined,{minimumFractionDigits:dec,maximumFractionDigits:dec});
 }
+function formatHP(value){
+ const n=Number(value);
+ if(!Number.isFinite(n))return "-";
+ return `${Number.isInteger(n)?n.toFixed(0):n.toFixed(1)} HP`;
+}
 function flowToM3h(value,unit){
  if(unit==="m3min")return value*60;
  if(unit==="lpm")return value*0.06;
@@ -551,7 +556,7 @@ function exportPDF(){
    <tr><td>Brand</td><td>B.G.Reich</td><td>Country of Origin</td><td>Australia</td></tr>
    <tr><td>Type</td><td>TEFC</td><td>Country of Manufacture</td><td>China</td></tr>
    <tr><td>Model</td><td>${motorData.available?motorData.model:"Data Not Available"}</td><td class="no-bottom field-heading">Efficiency:</td><td class="no-bottom">${motorEffClass}</td></tr>
-   <tr><td>Rated Power</td><td>${best.motor_hp.toFixed(1)} HP</td><td class="no-top no-bottom indent">100%</td><td class="no-top no-bottom">${motorData.available?motorValue(motorData.eff100," %"):"-"}</td></tr>
+   <tr><td>Rated Power</td><td>${formatHP(best.motor_hp)}</td><td class="no-top no-bottom indent">100%</td><td class="no-top no-bottom">${motorData.available?motorValue(motorData.eff100," %"):"-"}</td></tr>
    <tr><td>Speed</td><td>${motorData.available&&motorData.rpm!==null?motorData.rpm+" rpm":"-"}</td><td class="no-top indent">75%</td><td class="no-top">${motorData.available?motorValue(motorData.eff75," %"):"-"}</td></tr>
    <tr><td>Rated FL Amp</td><td>${motorData.available?motorValue(motorData.amp," Amp"):"-"}</td><td class="no-bottom field-heading">Power Factor:-</td><td class="no-bottom"></td></tr>
    <tr><td>Frequency</td><td>${hz.toFixed(0)} Hz</td><td class="no-top no-bottom indent">100%</td><td class="no-top no-bottom">${motorData.available?motorValue(motorData.pf100):"-"}</td></tr>
@@ -573,6 +578,10 @@ window.onload=async()=>{
   const images=[...document.images];
   await Promise.all(images.map(img=>img.complete ? Promise.resolve() : new Promise(resolve=>{img.onload=resolve;img.onerror=resolve;})));
   if(document.fonts&&document.fonts.ready){try{await document.fonts.ready;}catch(e){}}
+  window.addEventListener("afterprint",()=>{
+    try{if(window.opener&&!window.opener.closed)window.opener.focus();}catch(e){}
+    window.close();
+  });
   setTimeout(()=>window.print(),700);
 };
 <\/script>
@@ -616,6 +625,10 @@ function renderSelected(){
  <p class="small"></p><div class="iso-note">ISO 9906:Grade 3B</div>`;
 }
 
+const flowInput=document.getElementById("flow");
+const headInput=document.getElementById("head");
+const flowUnitInput=document.getElementById("fu");
+const headUnitInput=document.getElementById("hu");
 const speedInput=document.getElementById("speedInput");
 const speedUnit=document.getElementById("speedUnit");
 const hzHidden=document.getElementById("hz");
@@ -656,7 +669,7 @@ modeRpm.onclick=()=>setSpeedMode("rpm");
 speedInput.addEventListener("input",updateSpeedConversion);
 
 function run(){
- const rawFlow=+flow.value,rawHead=+head.value,flowUnit=fu.value,headUnit=hu.value;
+ const rawFlow=+flowInput.value,rawHead=+headInput.value,flowUnit=flowUnitInput.value,headUnit=headUnitInput.value;
  let q=flowToM3h(rawFlow,flowUnit),h=headToM(rawHead,headUnit),hz=+document.getElementById("hz").value;
  if(!(q>0&&h>0&&hz>0&&hz<=50)){
    out.innerHTML='<div class="warning">Please check the input values. Operating frequency must be above 0 Hz and not more than 50 Hz.</div>';
