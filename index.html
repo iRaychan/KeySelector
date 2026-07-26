@@ -512,15 +512,15 @@ function exportPDF(){
  .dimension-title{text-align:center;font-size:26px;font-weight:700;text-decoration:underline;text-underline-offset:4px;margin:24mm 0 8mm}
  .dimension-drawing{height:152mm;display:flex;align-items:center;justify-content:center;padding:0 18mm}
  .dimension-drawing img{max-width:100%;max-height:100%;object-fit:contain}
- .dimension-info{margin:3mm 12mm 0;display:grid;grid-template-columns:1.25fr 1fr;column-gap:0;font-size:15px}
+ .dimension-info{margin:3mm 12mm 0;display:grid;grid-template-columns:1fr 1fr;column-gap:0;font-size:15px}
  .dimension-table-title{font-size:16px;font-weight:700;margin-bottom:2mm}
  .dimension-grid{display:grid;grid-template-columns:25mm 1fr;border-left:1px solid #111;border-right:1px solid #111;line-height:1.55}
  .dimension-grid>div{padding:0 5mm}
  .dimension-grid>div:nth-child(odd){border-right:1px solid #111}
- .dimension-weight{display:grid;grid-template-columns:28mm 1fr;align-content:start;border-right:1px solid #111;margin-top:7mm;line-height:1.55}
+ .dimension-weight{display:grid;grid-template-columns:25mm 1fr;align-content:start;border-right:1px solid #111;margin-top:7mm;line-height:1.55}
  .dimension-weight>div{padding:0 5mm}
  .dimension-weight>div:first-child{border-right:1px solid #111}
- .dimension-note{position:absolute;left:0;bottom:1mm;font-size:10px}
+ .dimension-note{margin-top:1mm;font-size:12px;line-height:1.1;white-space:nowrap}
  @media print{
   body{zoom:.99;min-height:281mm}
   .report,.tech-page,.dimension-page{transform:scale(.99);transform-origin:top center}
@@ -601,10 +601,9 @@ function exportPDF(){
   <div class="dimension-info">
    <div><div class="dimension-table-title">Table Dimensions</div><div class="dimension-grid">
     <div>B1</div><div>${dimValue(dimensionData.b1)}</div><div>B2</div><div>${dimValue(dimensionData.b2)}</div><div>B1+B2</div><div>${dimValue(dimensionData.height)}</div><div>D</div><div>${dimValue(dimensionData.d)}</div><div>D1</div><div>${dimValue(dimensionData.d1)}</div><div>D2</div><div>${dimValue(dimensionData.d2)}</div>
-   </div></div>
+   </div><div class="dimension-note">* Approximate dimension &amp; weight</div></div>
    <div><div class="dimension-weight"><div>Weight</div><div>${dimensionData.weight==null?"-":`${formatNumber(Number(dimensionData.weight),0)} kG`}</div></div></div>
   </div>
-  <div class="dimension-note">* Approximate dimension &amp; weight</div>
  </section>
  <script>
 window.onload=async()=>{
