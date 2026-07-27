@@ -83,6 +83,8 @@ header p{margin:5px 0 0;font-size:12px;color:#687b89;letter-spacing:.2px}
 .preference-option input{width:auto;margin:0;accent-color:var(--blue)}
 .preference-option span{font-size:13px}
 .motor-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}.motor-options label{margin-top:13px}.motor-note{margin-top:7px;font-size:11px;color:var(--muted);line-height:1.35}.duty-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:2px}.duty-header h3{margin:0}.duty-header #go{width:auto;min-width:82px;margin:0;padding:8px 18px;font-size:14px}@media(max-width:420px){.motor-options{grid-template-columns:1fr}}
+.mobile-export-btn{display:none}.voltage-display{padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:#f5f7f9;font-weight:700;color:var(--dark)}
+@media(max-width:600px){.mobile-export-btn{display:block;width:auto;margin:8px 0 10px auto;padding:9px 16px}.heading-actions .export-btn{display:none}}
 
 @media print{.duty,.duty .required-duty-value{color:#c62828!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.duty .duty-separator{color:#c62828!important}}
 </style>
@@ -109,16 +111,13 @@ header p{margin:5px 0 0;font-size:12px;color:#687b89;letter-spacing:.2px}
 <main>
 <section class="card">
 <div class="duty-header"><h3>Required Duty</h3><button id="go" type="button">Select</button></div>
+<button class="export-btn mobile-export-btn" type="button" onclick="exportPDF()">EXPORT PDF</button>
 <label>Flow</label>
 <div class="row"><input id="flow" type="number" value="15" step="0.1"><select id="fu"><option value="m3h">m³/h</option><option value="m3min">m³/min</option><option value="lpm">L/min</option><option value="lps">L/s</option><option value="usgpm">US GPM</option><option value="igpm">IGPM</option></select></div>
 <label>Head</label>
 <div class="row"><input id="head" type="number" value="33" step="0.1"><select id="hu"><option value="m">m</option><option value="bar">bar</option><option value="ft">ft</option><option value="kpa">kPa</option><option value="psi">psi</option></select></div>
-<label>Operating frequency</label>
-<div class="frequency-mode">
-  <button type="button" id="modeHz" class="active">By Frequency (Hz)</button>
-  <button type="button" id="modeRpm">By Speed (RPM)</button>
-</div>
-<div class="row" style="margin-top:9px"><input id="speedInput" type="number" value="50" min="0" max="50" step="0.1"><select id="speedUnit" disabled><option>Hz</option></select></div>
+<label>Operating Speed</label>
+<div class="row"><input id="speedInput" type="number" value="50" min="0" max="50" step="0.1"><select id="speedUnit"><option value="hz">Hz</option><option value="rpm">RPM</option></select></div>
 <div class="frequency-info">0 Hz = 0 RPM · 50 Hz = 2900 RPM (Max)</div>
 <div class="speed-display"><span id="calculatedLabel">Calculated Speed</span><b id="calculatedValue">2900 RPM</b></div>
 <input id="hz" type="hidden" value="50">
@@ -126,8 +125,9 @@ header p{margin:5px 0 0;font-size:12px;color:#687b89;letter-spacing:.2px}
   <div><label for="motorEff">Motor Efficiency</label><select id="motorEff"><option value="IE5">IE5</option><option value="IE4">IE4</option><option value="IE3" selected>IE3</option><option value="IE2">IE2</option><option value="IE">IE</option></select></div>
   <div><label for="motorPhase">Motor Phase</label><select id="motorPhase"><option value="3Ph" selected>3 Phase</option><option value="1Ph">1 Phase</option></select></div>
 </div>
-<label for="motorVoltage">Motor Voltage</label>
-<div class="row"><input id="motorVoltage" type="number" value="415" min="380" max="415" step="1"><select id="voltageUnit" disabled><option>Volt</option></select></div>
+<label>Motor Voltage</label>
+<div id="motorVoltageDisplay" class="voltage-display">380–415 V</div>
+<input id="motorVoltage" type="hidden" value="415">
 <div id="motorDataNote" class="motor-note">IE3 · 3 Phase · 380–415 V</div>
 <label>Selection preference</label>
 <div class="preference-options">
@@ -152,8 +152,16 @@ function findMotorData(hp,effClass,phase,voltage,hz){
 }
 function updateMotorVoltageRange(){
  const phase=motorPhase.value,eff=motorEff.value;
- if(phase==="1Ph"){motorVoltage.min="220";motorVoltage.max="240";if(+motorVoltage.value<220||+motorVoltage.value>240)motorVoltage.value="240";motorDataNote.textContent=`${eff} · 1 Phase · 220–240 V`;}
- else{motorVoltage.min="380";motorVoltage.max="415";if(+motorVoltage.value<380||+motorVoltage.value>415)motorVoltage.value="415";motorDataNote.textContent=`${eff} · 3 Phase · 380–415 V`;}
+ const display=document.getElementById("motorVoltageDisplay");
+ if(phase==="1Ph"){
+   motorVoltage.value="240";
+   display.textContent="220–240 V";
+   motorDataNote.textContent=`${eff} · 1 Phase · 220–240 V`;
+ }else{
+   motorVoltage.value="415";
+   display.textContent="380–415 V";
+   motorDataNote.textContent=`${eff} · 3 Phase · 380–415 V`;
+ }
 }
 
 
@@ -727,15 +735,13 @@ const headUnitInput=document.getElementById("hu");
 const speedInput=document.getElementById("speedInput");
 const speedUnit=document.getElementById("speedUnit");
 const hzHidden=document.getElementById("hz");
-const modeHz=document.getElementById("modeHz");
-const modeRpm=document.getElementById("modeRpm");
 const calculatedLabel=document.getElementById("calculatedLabel");
 const calculatedValue=document.getElementById("calculatedValue");
-let speedMode="hz";
 function updateSpeedConversion(){
+  const mode=speedUnit.value;
   let value=Math.max(0,Number(speedInput.value)||0);
   let hz,rpm;
-  if(speedMode==="hz"){
+  if(mode==="hz"){
     value=Math.min(50,value); hz=value; rpm=hz*58;
     calculatedLabel.textContent="Calculated Speed";
     calculatedValue.textContent=`${rpm.toFixed(0)} RPM`;
@@ -747,20 +753,16 @@ function updateSpeedConversion(){
   speedInput.value=value;
   hzHidden.value=hz.toFixed(6);
 }
-function setSpeedMode(mode){
+function changeSpeedUnit(){
   const currentHz=Number(hzHidden.value)||0;
-  speedMode=mode;
-  modeHz.classList.toggle("active",mode==="hz");
-  modeRpm.classList.toggle("active",mode==="rpm");
-  if(mode==="hz"){
-    speedInput.min="0";speedInput.max="50";speedInput.step="0.1";speedInput.value=currentHz.toFixed(1);speedUnit.innerHTML="<option>Hz</option>";
+  if(speedUnit.value==="hz"){
+    speedInput.min="0";speedInput.max="50";speedInput.step="0.1";speedInput.value=currentHz.toFixed(1);
   }else{
-    speedInput.min="0";speedInput.max="2900";speedInput.step="1";speedInput.value=Math.round(currentHz*58);speedUnit.innerHTML="<option>RPM</option>";
+    speedInput.min="0";speedInput.max="2900";speedInput.step="1";speedInput.value=Math.round(currentHz*58);
   }
   updateSpeedConversion();
 }
-modeHz.onclick=()=>setSpeedMode("hz");
-modeRpm.onclick=()=>setSpeedMode("rpm");
+speedUnit.addEventListener("change",changeSpeedUnit);
 speedInput.addEventListener("input",updateSpeedConversion);
 
 function run(){
@@ -795,7 +797,6 @@ function run(){
 }
 motorPhase.addEventListener("change",()=>{updateMotorVoltageRange();run();});
 motorEff.addEventListener("change",()=>{updateMotorVoltageRange();run();});
-motorVoltage.addEventListener("change",run);
 updateMotorVoltageRange();
 go.onclick=run;
 run();
