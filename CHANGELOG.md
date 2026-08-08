@@ -1,5 +1,15 @@
 # KeyCHC Changelog
 
+## V3.4.4 Standalone — 2026-08-08
+- Removed the **Pumps in Parallel** KPI card from the Selected Pump Summary.
+- Added an explicit **Parallel pump curves 1–6** checkbox in Display Settings; the screen and PDF curve page follow this toggle.
+- Added **Multiple Duty Points D1–D6**. D1 remains the primary pump-selection duty; D2–D6 are reference/display points only.
+- Added **+ Duty Point** and remove controls for D2–D6. Extra duty points follow the current Flow and Head units.
+- Pump Curve and PDF curve page label active duty points as **D1, D2, D3…** and expand the chart range when needed.
+- Renamed the Required Duty display toggle to **Duty points D1–D6** so one setting controls all duty markers on screen and PDF.
+- Retained the V3.4.3 System Curve stop rule: whichever comes first — selected pump shut-off head or selected parallel-pump maximum flow.
+- Retained alternative-model small → big sorting and the standalone/no-login architecture.
+
 ## V3.4.3 Standalone — 2026-08-08
 - Added **Selected Pump Summary collapse**; collapsed mode keeps only Efficiency, Shaft Power and NPSHr visible.
 - Added **parallel reference pump curves from 1P to 6P** on the main pump chart; the currently selected pump quantity remains the highlighted curve.

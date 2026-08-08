@@ -1,6 +1,6 @@
 # Selector Foundation Notes
 
-KeyCHC V3.4.3 is the standalone reference implementation for future pump selectors.
+KeyCHC V3.4.4 is the standalone reference implementation for future pump selectors.
 
 ## Common selector foundation to retain
 1. **Required Duty input** — total system flow, head and units.
@@ -28,3 +28,9 @@ KeyCHC V3.4.3 is the standalone reference implementation for future pump selecto
 
 ## Integration rule
 Keep the selector standalone while developing and validating a pump series. KeySuite integration, authentication, customer selection, quotation transfer and Supabase should be added only as a separate integration layer later.
+
+## Reusable duty-point layer
+- D1 is the primary selection duty.
+- D2–D6 are optional reference duty points.
+- Duty-point plotting is part of the shared curve/display layer and is independent of CHC model-selection logic.
+- PDF curve output uses the same display state as the screen.

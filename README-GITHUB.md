@@ -1,4 +1,4 @@
-# KeyCHC V3.4.3 — Pure Standalone Selector
+# KeyCHC V3.4.4 — Pure Standalone Selector
 
 This is a **standalone CHC pump selector** and reusable selector foundation. It opens directly without KeySuite or a backend.
 
@@ -14,9 +14,10 @@ This is a **standalone CHC pump selector** and reusable selector foundation. It 
 - Existing CHC pump database and selection engine retained.
 - Required Duty input uses **Total System Flow** and Head.
 - **1–6 identical pumps in parallel**; selection flow per pump = Total Flow ÷ Pump Quantity.
-- Selected Pump display shows quantity, total system duty and duty per pump.
+- Selected Pump display shows quantity, total system duty and duty per pump; the separate **Pumps in Parallel** KPI card has been removed.
 - Selected Pump Summary can collapse to only **Efficiency, Shaft Power and NPSHr**.
 - Selected parallel Pump Curve plus optional **1–6 pump parallel reference curves**; per-pump Efficiency, Power and NPSH charts.
+- **Multiple Duty Points D1–D6**: D1 controls pump selection, while D2–D6 are reference points on the curve.
 - System Curve based on static head + quadratic resistance through Required Duty.
 - System Curve display stops at whichever comes first: **selected pump shut-off head** or **selected parallel-pump maximum flow**.
 - Operating Point is calculated from the combined parallel pump curve and total System Curve.
@@ -27,8 +28,8 @@ This is a **standalone CHC pump selector** and reusable selector foundation. It 
 
 ## Display Settings applied to PDF
 - Selected Pump Curve
-- Parallel Curves 1–6
-- Required Duty
+- Parallel Pump Curves 1–6
+- Duty Points D1–D6
 - System Curve
 - After-Orifice Curve
 - Operating Point

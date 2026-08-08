@@ -1,22 +1,22 @@
-KeyCHC V3.4.3 Standalone Validation — 2026-08-08
+KeyCHC V3.4.4 Standalone Validation — 2026-08-08
 
 PASS — index.html inline JavaScript syntax check (Node).
-PASS — CHC embedded database block is byte-for-byte unchanged from KeyCHC V3.4.2.
-PASS — 1–6 pumps-in-parallel quantity control retained.
-PASS — Parallel reference curves 1P through 6P are generated; selected pump quantity curve remains highlighted.
-PASS — Parallel Curves 1–6 display toggle is read by the same head-graph routine used by selector screen and PDF curve page.
-PASS — Selected Pump Summary collapse state implemented; collapsed CSS keeps only Efficiency, Shaft Power and NPSHr cards visible.
-PASS — Alternative shortlist sorting follows CHC model small → big.
-PASS — Same-base `-2` variant sorts before the corresponding standard model.
-PASS — Main recommendation ranking remains independent of Alternative shortlist display ordering.
-PASS — “Pump running at D1” wording is absent from selector output.
-PASS — System Curve stops at the first applicable boundary: shut-off head or selected parallel-pump maximum flow.
-PASS — Direct boundary test: head-limited case returned 7.071 m³/h for H=Q², shut-off=50 m, max flow=100 m³/h.
-PASS — Direct boundary test: flow-limited case returned 100 m³/h when the shut-off crossing lies beyond pump maximum flow.
-PASS — Representative 60 m³/h total @ 40 m with 3 pumps: System Curve maximum flow did not exceed selected 3-pump maximum flow and did not exceed shut-off head.
-PASS — Alternative ordering regression matched: CHC 20-30, CHC 45-20-2, CHC 45-20, CHC 64-80, CHC 90-30-2, CHC 90-30.
-PASS — No Supabase client initialization present.
-PASS — No login/password form present.
-PASS — No config.js dependency in package.
+PASS — HTML ID uniqueness check; no duplicate control IDs.
+PASS — CHC embedded database block is byte-for-byte unchanged from KeyCHC V3.4.3.
+PASS — Existing exportPDF() generator is byte-for-byte unchanged from KeyCHC V3.4.3.
+PASS — Explicit Display Settings checkbox exists: Parallel pump curves 1–6.
+PASS — Parallel reference curves 1P through 6P remain generated; selected pump quantity curve remains highlighted.
+PASS — Multiple Duty Points panel exists with D1 primary duty and + Duty Point control.
+PASS — Extra duty-point storage is capped at five additional points, giving D1–D6 maximum.
+PASS — D2–D6 are reference points only; pump selection continues to use D1 / Required Duty.
+PASS — Pump Curve labels active duty points D1, D2, D3… and includes visible duty points in chart axis sizing.
+PASS — Duty Points D1–D6 display toggle controls the same head-graph routine used by screen and PDF.
+PASS — PDF curve page continues to call keychcHeadGraph(), therefore Parallel Pump Curves and Duty Points follow current display toggles.
+PASS — Pumps in Parallel KPI card removed from Selected Pump Summary.
+PASS — Collapsed summary still keeps only Efficiency, Shaft Power and NPSHr.
+PASS — System Curve stop rule retained: first boundary of shut-off head or selected parallel-pump maximum flow.
+PASS — Alternative ordering comparator retained and regression order matched: CHC 20-30, CHC 45-20-2, CHC 45-20, CHC 64-80, CHC 90-30-2, CHC 90-30.
+PASS — Legacy “Pump running at D1” wording absent.
+PASS — No Supabase, login, password, or config.js dependency in index.html.
 
 Deployment mode: standalone static GitHub Pages / static web host.
