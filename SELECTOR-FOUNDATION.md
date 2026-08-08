@@ -1,6 +1,6 @@
 # Selector Foundation Notes
 
-KeyCHC V3.4.5 is the standalone reference implementation for future pump selectors.
+KeyCHC V3.4.6 is the standalone reference implementation for future pump selectors.
 
 ## Common selector foundation to retain
 1. **Required Duty input** — direct single-pump flow, head and units. D1 is not divided by a pump quantity.

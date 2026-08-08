@@ -1,51 +1,38 @@
-KeyCHC V3.4.5 Standalone — Validation Results
+KeyCHC V3.4.6 Standalone — Validation Results
 Date: 2026-08-08
 
 PASS — JavaScript syntax
 - Extracted inline application JavaScript passes `node --check`.
 
+PASS — V3.3.3 PDF Page 1 layout lock
+- Restored the exact V3.3.3 stacked Page 1 chart grid: 75 mm / 60 mm / 60 mm / 63 mm.
+- Restored the V3.3.3 chart border, last-chart treatment, gap and A4 print scaling rules.
+- Page 1 chart order remains Pump / Head, Efficiency, Power, NPSHr.
+
+PASS — Efficiency / Power / NPSHr PDF lock
+- PDF auxiliary charts use the original V3.3.3 `graph(...)` renderer.
+- Efficiency remains a single V3.3.3-style chart at 216 SVG height.
+- Power remains a single V3.3.3-style chart at 216 SVG height.
+- NPSHr remains a single V3.3.3-style chart at 216 SVG height.
+- 1P–6P Display Settings do not change these three PDF chart layouts.
+
+PASS — Dynamic Pump / Head Curve only
+- The top PDF Pump / Head Curve uses the current KeyCHC `keychcHeadGraph(...)` renderer.
+- Current Curve Hz, D1–D6, System Curve, After-Orifice / Operating Point and enabled 1P–6P reference curves remain available in the top curve content.
+- Top curve SVG height is returned to the original V3.3.3 Page 1 height (270) so the PDF box format stays unchanged.
+
+PASS — Existing selector features retained
+- D1 remains the direct single-pump selection duty.
+- Live post-selection speed simulation remains active.
+- Independent 1P–6P screen/reference selections remain active.
+- Multiple Duty Points D1–D6, System Curve, Orifice and alternative-model ordering remain active.
+
+PASS — CHC database preservation
+- Embedded `const DB=` payload is byte-identical to V3.4.5.
+- SHA-256 of embedded DB line: 424bc6e274bcea03c7f6685cc53778d486e744131baf967c63bf55f627df863b
+
 PASS — Standalone access
-- No KeySuite, Supabase, login, config.js, or user-approval dependency is required.
+- No KeySuite, Supabase, login, config.js or user-approval dependency is required.
 
-PASS — D1 selection logic
-- Number-of-pumps-running-at-D1 control is removed.
-- D1 Flow + Head is evaluated directly as a single-pump selection duty.
-
-PASS — Parallel reference controls
-- Six independent Display Settings controls exist: 1P, 2P, 3P, 4P, 5P, 6P.
-- Parallel references do not alter the D1 model-selection duty.
-- Enabled references are applied to Pump Curve, Efficiency, Power, and NPSH.
-- Power references use total power for the enabled pump count.
-
-PASS — Live curve speed
-- A model selected at 50 Hz remains selected when the display/curve speed is changed.
-- Pump, Efficiency, Power, and NPSH reference curves update from the live speed.
-- Selected Pump header distinguishes `Selected @` speed from current `Curve` speed.
-
-PASS — Summary control
-- Matching Summary and PDF controls are present.
-- Expanded Summary uses a downward triangle; collapsed Summary uses a right triangle.
-- Collapsed Summary retains only Efficiency, Shaft Power, and NPSHr KPI cards.
-
-PASS — Multiple duty points
-- D1 remains the selection duty.
-- D2–D6 remain optional reference/display points.
-- Duty-point labels render as D1, D2, D3, etc.
-
-PASS — System Curve / Orifice
-- System Curve is capped at shut-off head or the maximum flow of the highest enabled parallel reference, whichever is reached first.
-- Operating Point remains the 1P pump/system intersection.
-- Orifice / After-Orifice remains a 1P analysis function.
-
-PASS — Alternative ordering
-- Alternative Selection remains ordered CHC model small → big.
-- For the same base model, `-2` is listed before the standard model.
-
-PASS — PDF curve layout
-- PDF uses current live curve speed and current display settings.
-- Enabled 1P–6P references are rendered in Pump, Efficiency, Power, and NPSH charts.
-- Main Pump Curve uses the full chart row.
-- SVG charts use width:100% with automatic height; fixed-height PDF curve boxes were removed to prevent squeezing/stretching.
-
-PASS — CHC data preservation
-- Embedded CHC model database and dimensional data remain preserved from the V3.4.4 base.
+NOTE — Runtime print preview
+- Browser-level print-preview automation is restricted in the build environment, so validation was completed by JavaScript syntax checks plus exact PDF layout/render-code assertions against the V3.3.3 source.

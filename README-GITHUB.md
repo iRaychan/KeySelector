@@ -1,4 +1,4 @@
-# KeyCHC V3.4.5 — Pure Standalone Selector
+# KeyCHC V3.4.6 — Pure Standalone Selector
 
 This is a **standalone CHC pump selector** and reusable selector foundation. It opens directly without KeySuite or a backend.
 
@@ -46,3 +46,10 @@ See `SELECTOR-FOUNDATION.md` for reusable areas.
 
 ## Deploy
 Upload all files in this package to the root of a GitHub Pages repository. `index.html` is the application entry point. No environment variables or backend setup are required.
+
+## V3.4.6 PDF Page 1 lock
+
+- PDF Page 1 returns to the original **KeySelector V3.3.3** page layout.
+- **Efficiency / Power / NPSHr** chart format, size, stacking, spacing and styling are locked to V3.3.3.
+- Only the top **Pump / Head Curve** plotted content follows the current KeyCHC display settings (live curve speed, duty points, system/orifice/operating point and enabled parallel reference curves).
+- Page 2 technical data and Page 3 dimensions remain unchanged.
