@@ -1,22 +1,51 @@
-KeyCHC V3.4.4 Standalone Validation — 2026-08-08
+KeyCHC V3.4.5 Standalone — Validation Results
+Date: 2026-08-08
 
-PASS — index.html inline JavaScript syntax check (Node).
-PASS — HTML ID uniqueness check; no duplicate control IDs.
-PASS — CHC embedded database block is byte-for-byte unchanged from KeyCHC V3.4.3.
-PASS — Existing exportPDF() generator is byte-for-byte unchanged from KeyCHC V3.4.3.
-PASS — Explicit Display Settings checkbox exists: Parallel pump curves 1–6.
-PASS — Parallel reference curves 1P through 6P remain generated; selected pump quantity curve remains highlighted.
-PASS — Multiple Duty Points panel exists with D1 primary duty and + Duty Point control.
-PASS — Extra duty-point storage is capped at five additional points, giving D1–D6 maximum.
-PASS — D2–D6 are reference points only; pump selection continues to use D1 / Required Duty.
-PASS — Pump Curve labels active duty points D1, D2, D3… and includes visible duty points in chart axis sizing.
-PASS — Duty Points D1–D6 display toggle controls the same head-graph routine used by screen and PDF.
-PASS — PDF curve page continues to call keychcHeadGraph(), therefore Parallel Pump Curves and Duty Points follow current display toggles.
-PASS — Pumps in Parallel KPI card removed from Selected Pump Summary.
-PASS — Collapsed summary still keeps only Efficiency, Shaft Power and NPSHr.
-PASS — System Curve stop rule retained: first boundary of shut-off head or selected parallel-pump maximum flow.
-PASS — Alternative ordering comparator retained and regression order matched: CHC 20-30, CHC 45-20-2, CHC 45-20, CHC 64-80, CHC 90-30-2, CHC 90-30.
-PASS — Legacy “Pump running at D1” wording absent.
-PASS — No Supabase, login, password, or config.js dependency in index.html.
+PASS — JavaScript syntax
+- Extracted inline application JavaScript passes `node --check`.
 
-Deployment mode: standalone static GitHub Pages / static web host.
+PASS — Standalone access
+- No KeySuite, Supabase, login, config.js, or user-approval dependency is required.
+
+PASS — D1 selection logic
+- Number-of-pumps-running-at-D1 control is removed.
+- D1 Flow + Head is evaluated directly as a single-pump selection duty.
+
+PASS — Parallel reference controls
+- Six independent Display Settings controls exist: 1P, 2P, 3P, 4P, 5P, 6P.
+- Parallel references do not alter the D1 model-selection duty.
+- Enabled references are applied to Pump Curve, Efficiency, Power, and NPSH.
+- Power references use total power for the enabled pump count.
+
+PASS — Live curve speed
+- A model selected at 50 Hz remains selected when the display/curve speed is changed.
+- Pump, Efficiency, Power, and NPSH reference curves update from the live speed.
+- Selected Pump header distinguishes `Selected @` speed from current `Curve` speed.
+
+PASS — Summary control
+- Matching Summary and PDF controls are present.
+- Expanded Summary uses a downward triangle; collapsed Summary uses a right triangle.
+- Collapsed Summary retains only Efficiency, Shaft Power, and NPSHr KPI cards.
+
+PASS — Multiple duty points
+- D1 remains the selection duty.
+- D2–D6 remain optional reference/display points.
+- Duty-point labels render as D1, D2, D3, etc.
+
+PASS — System Curve / Orifice
+- System Curve is capped at shut-off head or the maximum flow of the highest enabled parallel reference, whichever is reached first.
+- Operating Point remains the 1P pump/system intersection.
+- Orifice / After-Orifice remains a 1P analysis function.
+
+PASS — Alternative ordering
+- Alternative Selection remains ordered CHC model small → big.
+- For the same base model, `-2` is listed before the standard model.
+
+PASS — PDF curve layout
+- PDF uses current live curve speed and current display settings.
+- Enabled 1P–6P references are rendered in Pump, Efficiency, Power, and NPSH charts.
+- Main Pump Curve uses the full chart row.
+- SVG charts use width:100% with automatic height; fixed-height PDF curve boxes were removed to prevent squeezing/stretching.
+
+PASS — CHC data preservation
+- Embedded CHC model database and dimensional data remain preserved from the V3.4.4 base.

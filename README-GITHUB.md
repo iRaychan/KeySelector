@@ -1,4 +1,4 @@
-# KeyCHC V3.4.4 — Pure Standalone Selector
+# KeyCHC V3.4.5 — Pure Standalone Selector
 
 This is a **standalone CHC pump selector** and reusable selector foundation. It opens directly without KeySuite or a backend.
 
@@ -12,27 +12,32 @@ This is a **standalone CHC pump selector** and reusable selector foundation. It 
 
 ## Selector functions
 - Existing CHC pump database and selection engine retained.
-- Required Duty input uses **Total System Flow** and Head.
-- **1–6 identical pumps in parallel**; selection flow per pump = Total Flow ÷ Pump Quantity.
-- Selected Pump display shows quantity, total system duty and duty per pump; the separate **Pumps in Parallel** KPI card has been removed.
+- Required Duty is direct **single-pump Flow + Head**. There is no number-of-pumps-running-at-D1 input and D1 is never divided by a pump quantity.
+- Operating Speed / Hz is used to select the pump. After selection, changing Hz/RPM keeps the selected model fixed and recalculates that model's curves live; press **Select** again only when a new model selection is required at the new speed.
 - Selected Pump Summary can collapse to only **Efficiency, Shaft Power and NPSHr**.
-- Selected parallel Pump Curve plus optional **1–6 pump parallel reference curves**; per-pump Efficiency, Power and NPSH charts.
-- **Multiple Duty Points D1–D6**: D1 controls pump selection, while D2–D6 are reference points on the curve.
-- System Curve based on static head + quadratic resistance through Required Duty.
-- System Curve display stops at whichever comes first: **selected pump shut-off head** or **selected parallel-pump maximum flow**.
-- Operating Point is calculated from the combined parallel pump curve and total System Curve.
-- Orifice / After-Orifice curve uses each pump's discharge DN and per-pump flow.
-- Clickable Alternative Models, with the qualified shortlist arranged **CHC model small → big** and `-2` variants before the matching standard model.
-- PDF curve page follows current Display Settings, including parallel reference curves.
-- Existing CHC technical/dimensional PDF format retained; parallel selections show total duty on the curve page and per-pump capacity on the technical page.
+- Top controls are matching-size **Summary ▼ / ▶** and **PDF** buttons.
+- Display Settings provide independent **1P, 2P, 3P, 4P, 5P and 6P** reference-curve choices.
+- Enabled 1P–6P references apply to **Pump Curve, Efficiency, Power and NPSH** together.
+  - Pump: combined flow = per-pump flow × pump count at the same head.
+  - Efficiency: per-pump efficiency plotted against combined flow.
+  - Power: total power of the enabled number of pumps plotted against combined flow.
+  - NPSH: per-pump NPSHr plotted against combined flow.
+- Parallel references are display/analysis curves only; they do **not** change the D1 selection model.
+- **Multiple Duty Points D1–D6**: D1 controls pump selection; D2–D6 are reference/display points.
+- System Curve uses static head + quadratic resistance through D1 and stops at whichever comes first: **selected pump shut-off head** or the maximum flow of the highest enabled 1P–6P reference curve.
+- Operating Point remains the **1P pump/system intersection** because D1 selection is single-pump.
+- Orifice / After-Orifice remains a 1P analysis curve using the selected CHC pump discharge DN.
+- Clickable Alternative Models remain arranged **CHC model small → big**, with `-2` variants before the matching standard model.
+- PDF curve output follows current Display Settings, duty points, enabled 1P–6P curves and the current live curve speed.
+- PDF chart layout preserves SVG aspect ratios so curves are not squeezed into fixed-height boxes.
+- Existing CHC technical and dimensional PDF content is retained.
 
-## Display Settings applied to PDF
-- Selected Pump Curve
-- Parallel Pump Curves 1–6
+## Display Settings applied to screen and PDF
+- Parallel Curves: **1P / 2P / 3P / 4P / 5P / 6P**
 - Duty Points D1–D6
 - System Curve
 - After-Orifice Curve
-- Operating Point
+- Operating Point (1P)
 
 ## Foundation purpose
 Use this package as a clean working selector base before connecting any selector to KeySuite. Product-specific data, selection rules and PDF content can later be replaced for another pump series while retaining the common selector workflow.

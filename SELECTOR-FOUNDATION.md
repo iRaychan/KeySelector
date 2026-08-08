@@ -1,26 +1,27 @@
 # Selector Foundation Notes
 
-KeyCHC V3.4.4 is the standalone reference implementation for future pump selectors.
+KeyCHC V3.4.5 is the standalone reference implementation for future pump selectors.
 
 ## Common selector foundation to retain
-1. **Required Duty input** — total system flow, head and units.
-2. **Parallel pump quantity** — 1 to 6 identical pumps; per-pump selection flow = total flow ÷ quantity.
-3. **Operating speed** — Hz/RPM handling.
-4. **Selected Pump display** — model, quantity, motor, total duty, per-pump duty, efficiency and operating point; summary collapse keeps Efficiency, Shaft Power and NPSHr visible.
-5. **Curve workspace** — selected parallel Pump Curve, optional 1–6 pump reference curves, plus per-pump Efficiency, Power and NPSH.
-6. **System Curve** — static head + quadratic resistance through required total duty, stopped at the first boundary reached: shut-off head or selected parallel-pump maximum flow.
-7. **Operating Point** — intersection between total system curve and combined parallel pump curve.
-8. **Orifice** — after-orifice parallel pump curve using per-pump/orifice flow.
-9. **Display Settings** — screen and PDF curve page share the same curve/point visibility settings.
-10. **Alternative Models** — clickable qualified shortlist sorted by CHC model small → big, with `-2` before the corresponding standard model.
-11. **Motor display/data hook** — motor efficiency class and sizing information.
-12. **PDF hook** — total system duty on the curve page and product-specific per-pump technical data.
+1. **Required Duty input** — direct single-pump flow, head and units. D1 is not divided by a pump quantity.
+2. **Operating speed** — Hz/RPM input used for selection plus live post-selection curve simulation while retaining the selected model.
+3. **Selected Pump display** — model, motor, D1 performance, selected-at speed and current curve speed; collapsed Summary keeps Efficiency, Shaft Power and NPSHr visible.
+4. **Parallel reference layer** — independent 1P–6P display choices applied to Pump, Efficiency, Power and NPSH charts without changing D1 selection logic.
+5. **Curve workspace** — Pump Curve plus Efficiency, Power and NPSH using the same enabled 1P–6P reference set.
+6. **System Curve** — static head + quadratic resistance through D1; display stops at the first boundary reached: shut-off head or maximum flow of the highest enabled parallel reference curve.
+7. **Operating Point** — 1P pump/system intersection. Parallel references remain analysis overlays rather than selection-state inputs.
+8. **Orifice** — 1P after-orifice analysis using selected pump discharge DN.
+9. **Display Settings** — screen and PDF share 1P–6P, duty-point, system, orifice and operating-point visibility settings.
+10. **Multiple Duty Points** — D1 is primary selection duty; D2–D6 are optional reference points.
+11. **Alternative Models** — clickable qualified shortlist sorted by CHC model small → big, with `-2` before the corresponding standard model.
+12. **PDF hook** — uses the current live curve speed and display state; chart SVGs should preserve aspect ratio rather than being forced into fixed-height containers.
 
 ## Product-specific parts to replace for another selector
 - Pump model database.
 - Pump curve data/equations.
 - Valid operating range.
 - Selection ranking rules.
+- Speed/affinity-law implementation where product-specific.
 - Motor sizing rules if product-specific.
 - Suction/discharge dimensions and product dimensions.
 - Product description text.
@@ -28,9 +29,3 @@ KeyCHC V3.4.4 is the standalone reference implementation for future pump selecto
 
 ## Integration rule
 Keep the selector standalone while developing and validating a pump series. KeySuite integration, authentication, customer selection, quotation transfer and Supabase should be added only as a separate integration layer later.
-
-## Reusable duty-point layer
-- D1 is the primary selection duty.
-- D2–D6 are optional reference duty points.
-- Duty-point plotting is part of the shared curve/display layer and is independent of CHC model-selection logic.
-- PDF curve output uses the same display state as the screen.

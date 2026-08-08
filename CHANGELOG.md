@@ -1,5 +1,18 @@
 # KeyCHC Changelog
 
+## V3.4.5 Standalone — 2026-08-08
+- Removed the **number of pumps running at D1** feature completely. D1 is once again a direct single-pump Flow + Head selection duty.
+- Replaced the old parallel-pump quantity logic with independent **1P / 2P / 3P / 4P / 5P / 6P** reference-curve checkboxes under Display Settings.
+- The enabled 1P–6P choices now apply consistently to **Pump Curve, Efficiency, Power and NPSH**. Power reference curves show total power for the enabled number of identical pumps; Efficiency and NPSHr remain per-pump performance plotted against combined flow.
+- Added **live post-selection speed adjustment**. The current Operating Speed is used during selection; after a model is selected, changing Hz/RPM keeps that model selected and recalculates its curves immediately. Pressing Select again performs a new model selection at the new speed.
+- Selected Pump header now shows both **Selected @ Hz** and the current **Curve Hz** when speed simulation is changed.
+- Changed the top actions to matching-size **Summary ▼ / ▶** and **PDF** buttons. Expanded Summary uses ▼; collapsed Summary uses ▶.
+- Collapsed Summary continues to show only **Efficiency, Shaft Power and NPSHr**.
+- PDF curve output now follows the current live curve speed and enabled 1P–6P references across all four charts.
+- Reworked the PDF curve-page layout so SVGs preserve their own aspect ratio instead of being forced into fixed-height boxes; the main Pump Curve uses the full page width and the three auxiliary charts use a dedicated row without curve squeezing.
+- System Curve remains capped by **shut-off head or the highest enabled parallel-reference maximum flow**, whichever is reached first. Operating Point remains a 1P/system intersection because D1 selection is single-pump.
+- Multiple Duty Points D1–D6, Orifice, alternative model sorting and standalone/no-login deployment are retained.
+
 ## V3.4.4 Standalone — 2026-08-08
 - Removed the **Pumps in Parallel** KPI card from the Selected Pump Summary.
 - Added an explicit **Parallel pump curves 1–6** checkbox in Display Settings; the screen and PDF curve page follow this toggle.
