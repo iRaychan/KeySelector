@@ -1,5 +1,16 @@
 # KeyCHC Changelog
 
+## V3.4.2 Standalone — 2026-08-08
+- Added **1 to 6 identical pumps in parallel**. Required Flow is treated as total system flow; pump selection uses Total Flow ÷ Pump Quantity at the same head.
+- Main pump curve now becomes the combined parallel-pump curve while Efficiency, Power and NPSH remain per-pump charts.
+- System Curve and Operating Point now calculate against total parallel flow.
+- Limited System Curve display to the selected pump **shut-off head at zero flow** so it no longer extends excessively above the useful pump range.
+- Orifice / After-Orifice calculation now uses the flow through each individual pump/orifice when multiple pumps are selected.
+- Added Pump Curve ON/OFF to Display Settings.
+- PDF curve page now follows the active Pump Curve, Required Duty, System Curve, After-Orifice and Operating Point display settings.
+- PDF front page shows total system duty and pump quantity; CHC technical data Capacity is shown **per pump** for parallel selections.
+- Retained the original CHC database, model data and standalone/no-login deployment mode.
+
 ## V3.4.1 Standalone — 2026-08-08
 - Defined KeyCHC as a **pure standalone selector** foundation.
 - Explicitly removed any KeySuite/Supabase/login requirement from the deployment specification.

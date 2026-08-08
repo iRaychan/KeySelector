@@ -1,18 +1,20 @@
 # Selector Foundation Notes
 
-KeyCHC V3.4.1 is the standalone reference implementation for future pump selectors.
+KeyCHC V3.4.2 is the standalone reference implementation for future pump selectors.
 
 ## Common selector foundation to retain
-1. **Required Duty input** — flow, head and units.
-2. **Operating speed** — Hz/RPM handling.
-3. **Selected Pump display** — model, motor, duty, efficiency and operating point.
-4. **Curve workspace** — Pump Curve, Efficiency, Power and NPSH.
-5. **System Curve** — static head + quadratic resistance through required duty.
-6. **Operating Point** — pump/system curve intersection.
-7. **Orifice** — after-orifice pump curve and new intersection.
-8. **Alternative Models** — clickable alternate selection list.
-9. **Motor display/data hook** — motor efficiency class and sizing information.
-10. **PDF hook** — product-specific PDF/report output.
+1. **Required Duty input** — total system flow, head and units.
+2. **Parallel pump quantity** — 1 to 6 identical pumps; per-pump selection flow = total flow ÷ quantity.
+3. **Operating speed** — Hz/RPM handling.
+4. **Selected Pump display** — model, quantity, motor, total duty, per-pump duty, efficiency and operating point.
+5. **Curve workspace** — combined Pump Curve plus per-pump Efficiency, Power and NPSH.
+6. **System Curve** — static head + quadratic resistance through required total duty, visually capped at pump shut-off head.
+7. **Operating Point** — intersection between total system curve and combined parallel pump curve.
+8. **Orifice** — after-orifice parallel pump curve using per-pump/orifice flow.
+9. **Display Settings** — screen and PDF curve page share the same curve/point visibility settings.
+10. **Alternative Models** — clickable alternate selection list.
+11. **Motor display/data hook** — motor efficiency class and sizing information.
+12. **PDF hook** — total system duty on the curve page and product-specific per-pump technical data.
 
 ## Product-specific parts to replace for another selector
 - Pump model database.
