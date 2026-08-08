@@ -1,1 +1,3 @@
-3.6
+KeyCHC V3.4.1 Standalone
+Based on KeyCHC V3.4.0
+Mode: Pure standalone selector — no KeySuite / Supabase / login required

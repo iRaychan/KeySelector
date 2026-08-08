@@ -1,0 +1,14 @@
+KeyCHC V3.4.1 Standalone Validation — 2026-08-08
+
+PASS — index.html inline JavaScript syntax check (Node).
+PASS — CHC embedded database/selection block unchanged from KeyCHC V3.4.0.
+PASS — Selected Pump display present.
+PASS — System Curve controls/logic present.
+PASS — Orifice / After-Orifice controls/logic present.
+PASS — Alternative Models present.
+PASS — CHC PDF export function present.
+PASS — No Supabase client initialization present.
+PASS — No login/password form present.
+PASS — No config.js dependency in package.
+
+Deployment mode: standalone static GitHub Pages / static web host.
