@@ -1,5 +1,13 @@
 # KeyCHC Changelog
 
+## V3.4.3 Standalone — 2026-08-08
+- Added **Selected Pump Summary collapse**; collapsed mode keeps only Efficiency, Shaft Power and NPSHr visible.
+- Added **parallel reference pump curves from 1P to 6P** on the main pump chart; the currently selected pump quantity remains the highlighted curve.
+- Added Parallel Curves 1–6 to Display Settings; the PDF curve page follows this setting.
+- Removed the legacy **“Pump running at D1”** wording/annotation from the selector output.
+- Alternative Selection qualified shortlist is now arranged by **CHC model small → big**; for the same base model, `-2` is listed before the standard model. Main recommendation logic remains unchanged.
+- Refined System Curve plotting: it stops at whichever comes first — **selected pump shut-off head (Q=0 maximum head)** or **selected parallel-pump maximum flow**.
+
 ## V3.4.2 Standalone — 2026-08-08
 - Added **1 to 6 identical pumps in parallel**. Required Flow is treated as total system flow; pump selection uses Total Flow ÷ Pump Quantity at the same head.
 - Main pump curve now becomes the combined parallel-pump curve while Efficiency, Power and NPSH remain per-pump charts.

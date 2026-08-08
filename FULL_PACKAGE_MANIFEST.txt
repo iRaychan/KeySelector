@@ -1,14 +1,14 @@
-KeyCHC V3.4.2 Standalone Pure Selector — Full Package Manifest
+KeyCHC V3.4.3 Standalone Pure Selector — Full Package Manifest
 
 .nojekyll	0 bytes
-CHANGELOG.md	2224 bytes
-README-GITHUB.md	2018 bytes
-SELECTOR-FOUNDATION.md	1814 bytes
-TEST_RESULTS.txt	1349 bytes
-VERSION.txt	134 bytes
 apple-touch-icon.png	43142 bytes
 bgreich-logo.png	99924 bytes
+CHANGELOG.md	3080 bytes
 favicon.png	8067 bytes
-index.html	3482262 bytes
+index.html	3486132 bytes
 manifest.webmanifest	396 bytes
+README-GITHUB.md	2409 bytes
+SELECTOR-FOUNDATION.md	2062 bytes
 service-worker.js	731 bytes
+TEST_RESULTS.txt	1804 bytes
+VERSION.txt	134 bytes

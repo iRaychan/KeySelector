@@ -1,23 +1,22 @@
-KeyCHC V3.4.2 Standalone Validation — 2026-08-08
+KeyCHC V3.4.3 Standalone Validation — 2026-08-08
 
 PASS — index.html inline JavaScript syntax check (Node).
-PASS — CHC embedded database block unchanged from KeyCHC V3.4.1.
-PASS — 1–6 pumps-in-parallel quantity control present.
-PASS — model selection uses total system flow divided by pump quantity.
-PASS — combined parallel pump curve uses per-pump flow at common head.
-PASS — System Curve still passes through total Required Duty.
-PASS — System Curve maximum display head is capped at pump shut-off head.
-PASS — Operating Point calculation returns total flow and per-pump flow consistently.
-PASS — Orifice calculation uses per-pump/orifice flow for parallel selections.
-PASS — Pump Curve display toggle added.
-PASS — PDF first curve chart uses the same display-aware head graph as the selector screen.
-PASS — PDF technical Capacity uses per-pump flow for parallel selections.
-PASS — CHC embedded database/model data unchanged.
+PASS — CHC embedded database block is byte-for-byte unchanged from KeyCHC V3.4.2.
+PASS — 1–6 pumps-in-parallel quantity control retained.
+PASS — Parallel reference curves 1P through 6P are generated; selected pump quantity curve remains highlighted.
+PASS — Parallel Curves 1–6 display toggle is read by the same head-graph routine used by selector screen and PDF curve page.
+PASS — Selected Pump Summary collapse state implemented; collapsed CSS keeps only Efficiency, Shaft Power and NPSHr cards visible.
+PASS — Alternative shortlist sorting follows CHC model small → big.
+PASS — Same-base `-2` variant sorts before the corresponding standard model.
+PASS — Main recommendation ranking remains independent of Alternative shortlist display ordering.
+PASS — “Pump running at D1” wording is absent from selector output.
+PASS — System Curve stops at the first applicable boundary: shut-off head or selected parallel-pump maximum flow.
+PASS — Direct boundary test: head-limited case returned 7.071 m³/h for H=Q², shut-off=50 m, max flow=100 m³/h.
+PASS — Direct boundary test: flow-limited case returned 100 m³/h when the shut-off crossing lies beyond pump maximum flow.
+PASS — Representative 60 m³/h total @ 40 m with 3 pumps: System Curve maximum flow did not exceed selected 3-pump maximum flow and did not exceed shut-off head.
+PASS — Alternative ordering regression matched: CHC 20-30, CHC 45-20-2, CHC 45-20, CHC 64-80, CHC 90-30-2, CHC 90-30.
 PASS — No Supabase client initialization present.
 PASS — No login/password form present.
 PASS — No config.js dependency in package.
-
-Representative logic test: 60 m³/h total @ 40 m with 3 pumps => 20 m³/h selection flow per pump; system-curve cap and operating-point math passed.
-1–6 pump regression loop passed.
 
 Deployment mode: standalone static GitHub Pages / static web host.
