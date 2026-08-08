@@ -1,5 +1,14 @@
 # KeyCHC Changelog
 
+## V3.4.7 Standalone — 2026-08-08
+- Kept the **V3.3.3 PDF Page 1 layout fully locked**: same A4 chart order, chart-box dimensions, vertical stacking, spacing, borders and typography.
+- Updated PDF **Efficiency / Power / NPSHr plotted content** to follow the same enabled **1P–6P** reference-curve selections as the Pump / Head chart.
+- PDF Efficiency keeps per-pump efficiency values while plotting each enabled pump count against combined flow.
+- PDF Power shows total absorbed power for each enabled pump count (per-pump power × number of pumps) against combined flow.
+- PDF NPSHr keeps per-pump NPSHr values while plotting each enabled pump count against combined flow.
+- All four PDF Page 1 charts use the current live **Curve Hz**. D1 remains a direct single-pump selection duty; parallel curves remain display/reference only.
+- Page 2 technical data, Page 3 dimensions, selector logic and CHC database are unchanged.
+
 ## V3.4.6 Standalone — 2026-08-08
 - Restored **PDF Page 1** to the original KeySelector V3.3.3 stacked chart layout and dimensions.
 - Locked **Efficiency / Power / NPSHr** PDF charts to the V3.3.3 format: same chart sizes, vertical arrangement, spacing, border treatment and typography.

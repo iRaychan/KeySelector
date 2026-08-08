@@ -1,19 +1,19 @@
-KeyCHC V3.4.6 Standalone — Full Package Manifest
+KeyCHC V3.4.7 Standalone — Full Package Manifest
 Generated: 2026-08-08
 
 Repository root files:
 - .nojekyll (0 bytes)
 - apple-touch-icon.png (43,142 bytes)
 - bgreich-logo.png (99,924 bytes)
-- CHANGELOG.md (6,780 bytes)
+- CHANGELOG.md (7,709 bytes)
 - favicon.png (8,067 bytes)
-- FULL_PACKAGE_MANIFEST.txt (578 bytes)
-- index.html (3,497,644 bytes)
+- FULL_PACKAGE_MANIFEST.txt (618 bytes)
+- index.html (3,497,689 bytes)
 - manifest.webmanifest (396 bytes)
-- README-GITHUB.md (3,710 bytes)
-- SELECTOR-FOUNDATION.md (2,438 bytes)
+- README-GITHUB.md (3,905 bytes)
+- SELECTOR-FOUNDATION.md (2,464 bytes)
 - service-worker.js (731 bytes)
-- TEST_RESULTS.txt (2,088 bytes)
+- TEST_RESULTS.txt (1,730 bytes)
 - VERSION.txt (134 bytes)
 
 Deployment: upload/extract all files into the repository root. No backend or config.js is required.

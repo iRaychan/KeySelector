@@ -1,38 +1,31 @@
-KeyCHC V3.4.6 Standalone — Validation Results
+KeyCHC V3.4.7 Standalone — Validation Results
 Date: 2026-08-08
 
 PASS — JavaScript syntax
 - Extracted inline application JavaScript passes `node --check`.
 
-PASS — V3.3.3 PDF Page 1 layout lock
-- Restored the exact V3.3.3 stacked Page 1 chart grid: 75 mm / 60 mm / 60 mm / 63 mm.
-- Restored the V3.3.3 chart border, last-chart treatment, gap and A4 print scaling rules.
-- Page 1 chart order remains Pump / Head, Efficiency, Power, NPSHr.
+PASS — V3.3.3 PDF Page 1 layout remains locked
+- Page 1 grid remains exactly 75 mm / 60 mm / 60 mm / 63 mm.
+- Existing chart order remains Pump / Head, Efficiency, Power, NPSHr.
+- Existing borders, spacing, final-chart treatment and A4 print scaling remain unchanged from V3.4.6 / V3.3.3 master layout.
 
-PASS — Efficiency / Power / NPSHr PDF lock
-- PDF auxiliary charts use the original V3.3.3 `graph(...)` renderer.
-- Efficiency remains a single V3.3.3-style chart at 216 SVG height.
-- Power remains a single V3.3.3-style chart at 216 SVG height.
-- NPSHr remains a single V3.3.3-style chart at 216 SVG height.
-- 1P–6P Display Settings do not change these three PDF chart layouts.
+PASS — 1P–6P PDF content across all four charts
+- Pump / Head continues to use the current enabled 1P–6P reference set.
+- Efficiency PDF chart now uses the same enabled 1P–6P set; efficiency remains per-pump and x-axis uses combined flow.
+- Power PDF chart now uses the same enabled 1P–6P set; plotted power is multiplied by pump count and x-axis uses combined flow.
+- NPSHr PDF chart now uses the same enabled 1P–6P set; NPSHr remains per-pump and x-axis uses combined flow.
+- Isolated exact-function regression with 1P + 2P + 3P enabled returned PASS and excluded 4P–6P.
 
-PASS — Dynamic Pump / Head Curve only
-- The top PDF Pump / Head Curve uses the current KeyCHC `keychcHeadGraph(...)` renderer.
-- Current Curve Hz, D1–D6, System Curve, After-Orifice / Operating Point and enabled 1P–6P reference curves remain available in the top curve content.
-- Top curve SVG height is returned to the original V3.3.3 Page 1 height (270) so the PDF box format stays unchanged.
-
-PASS — Existing selector features retained
-- D1 remains the direct single-pump selection duty.
-- Live post-selection speed simulation remains active.
-- Independent 1P–6P screen/reference selections remain active.
-- Multiple Duty Points D1–D6, System Curve, Orifice and alternative-model ordering remain active.
+PASS — Live Curve Hz
+- `exportPDF()` obtains `best` from `keychcCurrentDisplayModel()`, so all Page 1 curves use the current post-selection Curve Hz.
+- D1 remains a direct single-pump selection duty; 1P–6P are display/reference curves only.
 
 PASS — CHC database preservation
-- Embedded `const DB=` payload is byte-identical to V3.4.5.
-- SHA-256 of embedded DB line: 424bc6e274bcea03c7f6685cc53778d486e744131baf967c63bf55f627df863b
+- Embedded `const DB=` payload is byte-identical to V3.4.6.
+- SHA-256 of embedded DB payload: 998a6376ee86d674987d1ad3a63467644246efe3b15c619ce6d510b704092b02
+
+PASS — Page 2 / Page 3 preservation
+- Technical-data and dimension-page report markup was not modified for this amendment.
 
 PASS — Standalone access
 - No KeySuite, Supabase, login, config.js or user-approval dependency is required.
-
-NOTE — Runtime print preview
-- Browser-level print-preview automation is restricted in the build environment, so validation was completed by JavaScript syntax checks plus exact PDF layout/render-code assertions against the V3.3.3 source.

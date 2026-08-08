@@ -1,6 +1,6 @@
 # Selector Foundation Notes
 
-KeyCHC V3.4.6 is the standalone reference implementation for future pump selectors.
+KeyCHC V3.4.7 is the standalone reference implementation for future pump selectors.
 
 ## Common selector foundation to retain
 1. **Required Duty input** — direct single-pump flow, head and units. D1 is not divided by a pump quantity.
@@ -14,7 +14,7 @@ KeyCHC V3.4.6 is the standalone reference implementation for future pump selecto
 9. **Display Settings** — screen and PDF share 1P–6P, duty-point, system, orifice and operating-point visibility settings.
 10. **Multiple Duty Points** — D1 is primary selection duty; D2–D6 are optional reference points.
 11. **Alternative Models** — clickable qualified shortlist sorted by CHC model small → big, with `-2` before the corresponding standard model.
-12. **PDF hook** — uses the current live curve speed and display state; chart SVGs should preserve aspect ratio rather than being forced into fixed-height containers.
+12. **PDF hook** — retain the locked V3.3.3 Page 1 chart-box layout while letting Pump, Efficiency, Power and NPSHr plotted content follow enabled 1P–6P references and current live Curve Hz.
 
 ## Product-specific parts to replace for another selector
 - Pump model database.
